@@ -1,0 +1,15 @@
+aula assistir 41 criar serviço calculadora
+criar novo projeto 
+ng new nome
+
+criar module
+ng g module pasta/nome
+
+criar compoment
+ng g compoment pasta/nome
+
+criar service
+ng g service module/pasta/nome
+
+instalar o bootstrap
+npm install --save bootstrap@version
