@@ -11,5 +11,13 @@ ng g compoment pasta/nome
 criar service
 ng g service module/pasta/nome
 
+criar directive 
+ng g directive pasta/pasta/nome
+
 instalar o bootstrap
 npm install --save bootstrap@version
+
+DICAS
+arquivos.service.ts devem ser declarados no providers do module
+os modules devem ser declarados no module principal para que o mesmo o reconheça
+    neste caso é declarado no array de imports
