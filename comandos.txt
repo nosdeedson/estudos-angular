@@ -21,3 +21,4 @@ DICAS
 arquivos.service.ts devem ser declarados no providers do module
 os modules devem ser declarados no module principal para que o mesmo o reconheça
     neste caso é declarado no array de imports
+
