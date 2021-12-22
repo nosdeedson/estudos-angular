@@ -19,6 +19,8 @@ export class JogoDaVelhaService {
   private _showTabuleiro : boolean;
   private _showFinal : boolean;
 
+  private players : boolean = false;
+
 
   constructor() { }
 
@@ -64,9 +66,10 @@ export class JogoDaVelhaService {
     return this._jogador;
   }
 
-  iniciarJogo(): void{
+  iniciarJogo(players: boolean): void{
     this._showInicio = false;
     this._showTabuleiro = true;
+    this.players = players;
   }
 
   jogar(posX: number, posY: number): void{
@@ -77,19 +80,15 @@ export class JogoDaVelhaService {
     this.tabuleiro[posX][posY] = this._jogador;
     this.numeroMovimentos++;
     this.vitoria = this.fimJogo(posX, posY, this.tabuleiro, this._jogador);
-    if(this.vitoria){
-      this.resultado = 1;
-    }
+    
     this._jogador = (this._jogador === this.X) ? this.O : this.X;
     if (this.vitoria){
       this._showFinal = true;
-      this.resultado = this._jogador;
     }
 
-    if ( !this.vitoria && this.numeroMovimentos < 9){
+    if ( !this.vitoria && this.numeroMovimentos < 9 && this.players == false){
       this.cpuJogar();
     }
-
 
     if( !this.vitoria && this.numeroMovimentos === 9){
       this._jogador = 0;
@@ -102,18 +101,22 @@ export class JogoDaVelhaService {
     let fim : any = false;
     if(tabuleiro[linha][0] === jogador && tabuleiro[linha][1] === jogador && tabuleiro[linha][2] === jogador){
       fim = [ [linha, 0], [linha, 1], [linha, 2] ];
+      this.resultado = this._jogador;
     }
 
     if ( tabuleiro[0][coluna] == jogador && tabuleiro[1][coluna] == jogador && tabuleiro[2][coluna] == jogador ){
-      fim = [ [0, linha], [1, linha], [2, linha] ]
+      fim = [ [0, coluna], [1, coluna], [2, coluna] ]
+      this.resultado = this._jogador;
     }
 
     if ( tabuleiro[0][0] === jogador && tabuleiro[1][1] === jogador && tabuleiro[2][2] === jogador){
       fim = [ [0, 0], [1, 1], [2, 2] ];
+      this.resultado = this._jogador;
     }
 
     if ( tabuleiro[0][2] === jogador && tabuleiro[1][1] === jogador && tabuleiro[2][0] === jogador){
-      fim = [ [0, 2], [1, 1], [2, 0] ]
+      fim = [ [0, 2], [1, 1], [2, 0] ];
+      this.resultado = this._jogador;
     }
     return fim;
   }
@@ -145,7 +148,6 @@ export class JogoDaVelhaService {
     this.numeroMovimentos++;
     this.vitoria = this.fimJogo(jogada[0], jogada[1], this.tabuleiro, this._jogador);
     if(this.vitoria){
-      this.resultado = 2;
       this._showFinal = true;
     }
     this._jogador = (this._jogador === this.X) ? this.O : this.X;

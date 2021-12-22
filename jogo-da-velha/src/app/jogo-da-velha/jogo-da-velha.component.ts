@@ -8,10 +8,24 @@ import { JogoDaVelhaService } from './shared/jogo-da-velha.service';
 })
 export class JogoDaVelhaComponent implements OnInit {
 
+  players : boolean = false;
+  iniciar : boolean = true;
+  resultado: number = 0;
+
+
   constructor( private jogoDaVelhaService : JogoDaVelhaService) { }
 
   ngOnInit(): void {
     this.jogoDaVelhaService.inicializar();
+  }
+
+  jogadores(jogadores : number) : void{
+    if ( jogadores === 1){
+      this.players = false;
+    }else{
+      this.players = true
+    }
+    this.iniciar = false;
   }
 
   get showInicio(): boolean{
@@ -27,7 +41,7 @@ export class JogoDaVelhaComponent implements OnInit {
   }
 
   iniciarJogo():void{
-    this.jogoDaVelhaService.iniciarJogo();
+    this.jogoDaVelhaService.iniciarJogo(this.players);
   }
 
   jogar(posX: number, posY: number): void{
@@ -43,16 +57,17 @@ export class JogoDaVelhaComponent implements OnInit {
   }
 
   exibirVitoria(posX: number, posY: number): boolean{
+    this.exibirResultado();
     return this.jogoDaVelhaService.exibirVitoria(posX, posY);
   }
 
   novoJogo(): void{
     this.jogoDaVelhaService.inicializar();
-    this.jogoDaVelhaService.iniciarJogo();
+    this.jogoDaVelhaService.iniciarJogo(this.players);
   }
 
-  exibirResultado() : number{
-    return this.jogoDaVelhaService.showResultado;
+  exibirResultado() : void{
+    this.resultado = this.jogoDaVelhaService.showResultado;
   }
 
 }

@@ -1,19 +1,38 @@
+.app{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 div {
-    width: 400px;
-    height: 400px; 
 	text-align: center;
 	font-family: 'Press Start 2P', cursive;
 }
 
-div.principal {
-	margin-top: 100px;
+.tabuleiro {
+    width: 400px;
+    height: 400px; 
 }
 
-a.botao {
-	margin-top: 100px;
+@media screen and (max-width: 450px) {
+	.tabuleiro {
+		width: 400px;
+		height: 400px;
+	}
+  }
+
+div.principal {
+	margin-top: 10px;
+}
+
+button.botao {
+	margin-top: 10px;
 	font-size: 20px;
-	background-color: lightgreen;
+	background-color: rgba(144, 238, 144, 0.692);
 	padding: 15px;
+	border-radius: 25%;
+	border: 4px solid green;
 }
 
 a:link, a:visited {
@@ -31,8 +50,8 @@ a:hover, a:active {
 
 ul li {
 	list-style: none;
-	width: 110px;
-	height: 110px;
+	width: 95px;
+	height: 95px;
 	float: left;
 	background-size: cover;
     background-repeat: no-repeat;
