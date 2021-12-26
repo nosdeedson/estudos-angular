@@ -10,19 +10,33 @@ import { ConversorService } from '../services/conversor.service';
   styleUrls: ['./modal-cotacao.component.css']
 })
 export class ModalCotacaoComponent implements OnInit {
+  mandarParaOPai = '';
 
   @Input() id : string;
   @Input() conversaoResponse : ConversaoResponse;
   @Input() conversao: Conversao = new Conversao();
   @Output() onConfirm: EventEmitter<any> = new EventEmitter();
+  @Output() devolucao  = new EventEmitter<string>();
+  @Output() devolucaoSemBotao = new EventEmitter<string>();
 
   constructor(private conversorService: ConversorService) { }
 
   ngOnInit(): void {
   }
-
+  
   novaConsulta(){
+    this.devolveSemAcaoUser();
     this.onConfirm.emit()
+  }
+
+  devolveSemAcaoUser(){
+    this.devolucaoSemBotao.emit('teste sem chamada do html filho');
+  }
+  
+  devolveParaOPai(msg : string){
+    this.devolveSemAcaoUser();
+    this.mandarParaOPai= msg;
+    this.devolucao.emit(this.mandarParaOPai);
   }
 
   get valorConvertido() : string{

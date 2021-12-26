@@ -17,6 +17,8 @@ export class ConversorComponent implements OnInit {
   conversao: Conversao;
   naoPossuiErro : boolean;
   conversaoResponse : ConversaoResponse;
+  retornoDoFilho : string = '';
+  retornoSemAcaoUsuario : string = '';
 
   @ViewChild("conversaoForm" , {static: true}) conversaoForm : NgForm;
 
@@ -32,7 +34,16 @@ export class ConversorComponent implements OnInit {
     this.conversao = new Conversao("EUR", "BRL", null);
     this.naoPossuiErro = true;
   }
+  
+  recebeDoFilho(msg: string) :void{
+    this.retornoDoFilho = msg;
+    console.log(this.retornoDoFilho);
+  }
 
+  recebeValor(msg : string){
+    this.retornoSemAcaoUsuario = msg;
+    console.log(this.retornoSemAcaoUsuario);
+  }
   converter() : void{
     if(this.conversaoForm.form.valid){
       this.conversorService.converter(this.conversao)

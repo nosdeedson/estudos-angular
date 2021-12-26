@@ -45,5 +45,19 @@
 	 [conversaoResponse]="conversaoResponse"
 	 [conversao]="conversao"
 	 (onConfirm)="init()"
+	 (devolucao)="recebeDoFilho($event)"
+	 (devolucaoSemBotao)="recebeValor($event)"
 	 ></app-modal-cotacao>
+</div>
+
+<br />
+<div *ngIf="retornoDoFilho !== ''" class="alert alert-success text-center" 
+	role="alert">
+	{{retornoDoFilho}}
+</div>
+
+<br />
+<div *ngIf="retornoSemAcaoUsuario !== ''" class="alert alert-success text-center" 
+	role="alert">
+	{{retornoSemAcaoUsuario}}
 </div>
