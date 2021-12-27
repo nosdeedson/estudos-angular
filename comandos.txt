@@ -1,4 +1,6 @@
-aula assistir 41 criar serviço calculadora
+na criação de qualquer elemeneto angular service, module, component
+ou pipe pode indicar mais de uma pasta na verdate é um path
+ao arquivo
 criar novo projeto 
 ng new nome
 
@@ -14,6 +16,10 @@ ng g service module/pasta/nome
 criar directive 
 ng g directive pasta/pasta/nome
 
+criar pipe
+ng g pipe pasta/nome
+devemos declarar o pipe no array declarations
+
 instalar o bootstrap
 npm install --save bootstrap@version
 
@@ -21,4 +27,6 @@ DICAS
 arquivos.service.ts devem ser declarados no providers do module
 os modules devem ser declarados no module principal para que o mesmo o reconheça
     neste caso é declarado no array de imports
+
+os services criados no module são declarados no array providers
 
