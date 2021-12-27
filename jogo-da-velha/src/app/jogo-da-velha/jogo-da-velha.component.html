@@ -1,18 +1,17 @@
 <div >
 
     <div class="container-fluid mt-5 ">
-      <h2>Jogo da velha</h2>
-    
+      <h2>Jogo da velha</h2>    
       <!-- tela inicial -->
       <div class="principal mt-5" *ngIf="showInicio">
         <div class="col-12">
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="player" (change)="jogadores(1)" id="player1" value="option1">
-            <label class="form-check-label" for="player1">Player 1</label>
+            <label class="form-check-label" for="player1">1 Player</label> 
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="player" (change)="jogadores(2)"  id="player2" value="option2">
-            <label class="form-check-label" for="player2">Player 2</label>
+            <label class="form-check-label" for="player2">2 Player</label>
           </div>
         </div>
         <div *ngIf="players" class="col-12 mt-5">

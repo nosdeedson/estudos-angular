@@ -11,14 +11,23 @@ export class JogoDaVelhaComponent implements OnInit {
   players : boolean = false;
   iniciar : boolean = true;
   resultado: number = 0;
+  width: number = 0;
 
 
   constructor( private jogoDaVelhaService : JogoDaVelhaService) { }
 
   ngOnInit(): void {
     this.jogoDaVelhaService.inicializar();
+    this.width = this.tamanhoTela;
   }
 
+  get tamanhoTela(): number{
+    var largura = window.innerWidth 
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+    return largura;
+  }
+  
   jogadores(jogadores : number) : void{
     if ( jogadores === 1){
       this.players = false;
@@ -41,7 +50,13 @@ export class JogoDaVelhaComponent implements OnInit {
   }
 
   iniciarJogo():void{
-    this.jogoDaVelhaService.iniciarJogo(this.players);
+    this.width = this.tamanhoTela;
+    if(this.width <= 400){
+      alert("Seu Dispositivo é muito pequeno. Por faver vire-o horizontalmente!!");
+      this.iniciarJogo();
+    }else{
+      this.jogoDaVelhaService.iniciarJogo(this.players);
+    }
   }
 
   jogar(posX: number, posY: number): void{
