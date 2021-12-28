@@ -6,12 +6,18 @@ ng new nome
 
 criar module
 ng g module pasta/nome
+declarar no array de imports
 
 criar compoment
 ng g compoment pasta/nome
 
+CRIAR COMPONENT SEMO ARQUIVO SPEC (test)
+ng generate compoment foo --skipTests=true
+ng g c nomecomponent --skipTests=true
+
 criar service
 ng g service module/pasta/nome
+declarar no provider
 
 criar directive 
 ng g directive pasta/pasta/nome
@@ -28,5 +34,6 @@ arquivos.service.ts devem ser declarados no providers do module
 os modules devem ser declarados no module principal para que o mesmo o reconheça
     neste caso é declarado no array de imports
 
-os services criados no module são declarados no array providers
+todos os arquivos gerados pelo cli do angular pode ser gerados usando a primeira letra
+do comando exemplo: generate => g; compoment => c; module => m; service => s.
 
