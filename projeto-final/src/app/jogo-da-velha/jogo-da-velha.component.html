@@ -1,0 +1,68 @@
+<div class="container-fluid col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+  <div class="row">
+    <h2 style="margin-top: 3px; margin-bottom: 10px;">Jogo da velha</h2>
+    <!-- tela inicial -->
+    <div class="principal mt-5" *ngIf="showInicio">
+      <div class="col-xs-12">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="player" (change)="jogadores(1)" id="player1"
+            value="option1">
+          <label class="form-check-label" for="player1">1 Player</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="player" (change)="jogadores(2)" id="player2"
+            value="option2">
+          <label class="form-check-label" for="player2">2 Player</label>
+        </div>
+      </div>
+      <div *ngIf="players" class="col-12 mt-5">
+        <label for="">Player 1 joga com 'X' e inicia o Jogo</label>
+      </div>
+      <div *ngIf="players" class="col-12 mt-5">
+        <label for="">Player 2 marca 'O' </label>
+      </div>
+      <div class="col-12 mt-5">
+        <button href="#" (click)="iniciarJogo()" class="botao" [disabled]="iniciar">
+          Iniciar
+        </button>
+      </div>
+    </div>
+    <!-- fim tela inicial -->
+     <div class="tabuleiro" *ngIf="showTabuleiro">
+        <ul style="min-height: 360px;">
+          <li class="kz-border-bottom kz-border-right" [ngClass]="{ 
+            'kz-img-x': exibirX(0,0),
+            'kz-img-o': exibirO(0, 0),
+            'kz-cor-vitoria': exibirVitoria(0, 0) }" (click)="jogar(0,0)"></li>
+          <li class="kz-border-bottom kz-border-right" [class.kz-img-x]="exibirX(0,1)" [class.kz-img-o]="exibirO(0,1)"
+            [class.kz-cor-vitoria]="exibirVitoria(0, 1)" (click)="jogar(0,1)"></li>
+          <li class="kz-border-bottom" [class.kz-img-x]="exibirX(0, 2)" [class.kz-img-o]="exibirO(0,2)"
+            [class.kz-cor-vitoria]="exibirVitoria(0, 2)" (click)="jogar(0,2)"></li>
+          <li class="kz-border-bottom kz-border-right" [class.kz-img-x]="exibirX(1,0)" [class.kz-img-o]="exibirO(1,0)"
+            [class.kz-cor-vitoria]="exibirVitoria(1,0)" (click)="jogar(1,0)"></li>
+          <li class="kz-border-bottom kz-border-right" [class.kz-img-x]="exibirX(1,1)" [class.kz-img-o]="exibirO(1,1)"
+            [class.kz-cor-vitoria]="exibirVitoria(1,1)" (click)="jogar(1,1)"></li>
+          <li class="kz-border-bottom" [class.kz-img-x]="exibirX(1,2)" [class.kz-img-o]="exibirO(1,2)"
+            [class.kz-cor-vitoria]="exibirVitoria(1,2)" (click)="jogar(1,2)"></li>
+          <li class="kz-border-right" [class.kz-img-x]="exibirX(2,0)" [class.kz-img-o]="exibirO(2,0)"
+            [class.kz-cor-vitoria]="exibirVitoria(2,0)" (click)="jogar(2,0)"></li>
+          <li class="kz-border-right" [class.kz-img-x]="exibirX(2,1)" [class.kz-img-o]="exibirO(2,1)"
+            [class.kz-cor-vitoria]="exibirVitoria(2,1)" (click)="jogar(2,1)"></li>
+          <li [class.kz-img-x]="exibirX(2,2)" [class.kz-img-o]="exibirO(2,2)" [class.kz-cor-vitoria]="exibirVitoria(2,2)"
+            (click)="jogar(2,2)"></li>
+        </ul>
+      </div>
+      <div *ngIf="showFinal">
+        <span>
+          <p *ngIf="resultado === 1">Jogador 1 Venceu (X) !!!</p>
+          <p *ngIf="resultado === 2">Jogador 2 venceu (O) !!!</p>
+          <p *ngIf="resultado === 3">O jogo terminou empatado...</p>
+          <br />
+          <a href="#" (click)="novoJogo()" class="botao">
+            Jogar novamente
+          </a>
+        </span>
+      </div>
+  </div>
+</div>
+

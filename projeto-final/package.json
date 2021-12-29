@@ -1,5 +1,5 @@
 {
-  "name": "calculadora",
+  "name": "projeto-final",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,12 +19,13 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "bootstrap": "^3.4.1",
+    "jquery": "^3.6.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.5",
+    "@angular-devkit/build-angular": "~12.2.14",
     "@angular/cli": "~12.2.14",
     "@angular/compiler-cli": "~12.2.0",
     "@types/jasmine": "~3.8.0",

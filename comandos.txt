@@ -29,6 +29,9 @@ devemos declarar o pipe no array declarations
 instalar o bootstrap
 npm install --save bootstrap@version
 
+instalar o jquery
+npm install --save jquery
+
 DICAS
 arquivos.service.ts devem ser declarados no providers do module
 os modules devem ser declarados no module principal para que o mesmo o reconheça
